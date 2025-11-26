@@ -1,0 +1,31 @@
+deploy:
+  stage: deploy
+
+  variables:
+    DOCKER_BUILDKIT: 1
+
+  before_script:
+    - sudo apk add --no-cache openssh-client sshpass
+
+  script:
+    - echo "Starting SSH connection to the server"
+    - |
+      sudo sshpass -p "$SSH_PASS" ssh -o StrictHostKeyChecking=no "$SSH_USER@$VM_IPADDRESS" '
+        cd /home/staging_server/data-bank-search/frontend &&
+        git fetch origin main &&
+        git checkout main &&
+        git pull origin main &&
+        docker compose down &&
+        docker compose build --no-cache &&
+        docker compose up -d
+      '
+
+  tags:
+    - docker
+    - data-bank-runner
+    - shell
+
+  only:
+    - main
+    - master
+

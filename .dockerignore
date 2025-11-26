@@ -1,0 +1,43 @@
+# -----------------------------
+# Dependencies & build outputs
+# -----------------------------
+node_modules
+.next
+out
+
+# -----------------------------
+# Env & configs
+# -----------------------------
+.env
+.env*.local
+
+# -----------------------------
+# Git & editor junk
+# -----------------------------
+.git
+.gitignore
+.vscode
+.idea
+*.swp
+*.swo
+
+# -----------------------------
+# OS & misc junk
+# -----------------------------
+.DS_Store
+Thumbs.db
+
+# -----------------------------
+# Logs & testing
+# -----------------------------
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+coverage
+.nyc_output
+
+# -----------------------------
+# Misc
+# -----------------------------
+.eslintcache
+README.md
